@@ -1,6 +1,6 @@
 # neb-trebmals-scraping-solutions
 
-WARNING: THIS SCRIPT WILL CLOSE ALL INSTANCES OF GOOGLE CHROME ON START!!!
+WARNING: THIS SCRIPT WILL CLOSE ALL INSTANCES OF GOOGLE CHROME AT START TIME!
 
 Sample Python code to scrape https://www.chartfox.org as per NebTrebmal's [Reddit post](https://www.reddit.com/r/webscraping/comments/17ywc4r/pdfs_from_free_charting_website/).
 
