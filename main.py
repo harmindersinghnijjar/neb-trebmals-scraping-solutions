@@ -43,6 +43,13 @@ class SeleniumClass:
     def quit(self):
         self.driver.quit()
 
+    def get_tab_details(self):
+        tab_details = self.driver.find_element(
+            By.CSS_SELECTOR, "#chart-nav > div:nth-child(2) > div.tab-details"
+        )
+        print(tab_details.text)
+        return tab_details.text
+
 
 if __name__ == "__main__":
     os_command = "taskkill /im chrome.exe /f"
@@ -52,4 +59,21 @@ if __name__ == "__main__":
     selenium.take_screenshot("screenshot_landing_page.png")
     selenium.search("KFSO")
     selenium.take_screenshot("screenshot_panels_page.png")
+    time.sleep(5)
+    tabs = selenium.get_tab_details()
+    # If there are tabs, then click on the first one
+    if tabs:
+        # Get the length of the tabs and then run a loop to click on each tab
+        tab_length = len(tabs)
+        print(f"Tab length: {tab_length}")
+        # Loop through the tabs and click on each one
+        for i in range(tab_length):
+            tab = selenium.driver.find_element(
+                By.CSS_SELECTOR,
+                f"#chart-nav > div:nth-child(2) > div.tab-details > div:nth-child(1) > ul > li:nth-child({i+1})",
+            )
+            tab.click()
+            time.sleep(5)
+            selenium.take_screenshot(f"screenshot_tab_page_{i}.png")
+
     selenium.quit()
